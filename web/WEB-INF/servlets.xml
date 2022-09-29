@@ -1,0 +1,9 @@
+<servlet>
+	<servlet-name>mapcloud</servlet-name>
+	<servlet-class>com.clouderp.web.servlets.ReceptionMapSelectionsServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>mapcloud</servlet-name>
+	<url-pattern>/mapcloud/poligono</url-pattern>
+</servlet-mapping>

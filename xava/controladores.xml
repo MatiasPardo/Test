@@ -1,0 +1,2838 @@
+<?xml version = "1.0" encoding = "ISO-8859-1"?>
+
+<!DOCTYPE controladores SYSTEM "dtds/controladores.dtd">
+
+<controladores>
+    
+  <!-- Variable de entorno: 
+    <var-entorno nombre="CloudERP_ANYO_DEFECTO" valor="2015"/>
+    -->
+    
+    <!-- Objeto de sesión:
+    <Objeto nombre="CloudERP_anyoActivo" clase="java.lang.Integer" valor="2015" 
+            ambito="global"/>
+    -->
+    
+    <var-entorno nombre="XAVA_SEARCH_ACTION" valor="ObjetoNegocio.editar"/>
+    
+    <controlador nombre="Collection">		
+		<accion nombre="new" imagen="create_new.gif"
+			icono="library-plus"
+			clase="org.openxava.actions.CreateNewElementInCollectionAction"/>							
+			
+		<accion nombre="add" imagen="create_new.gif"
+			icono="table-row-plus-after"
+			clase="org.openxava.actions.GoAddElementsToCollectionAction"/>
+			
+		<accion nombre="hideDetail"
+			clase="org.openxava.actions.HideDetailElementInCollectionAction"/>			
+
+		<accion nombre="saveAndStay"
+			por-defecto="si-posible"
+			clase="org.openxava.actions.SaveAndStayElementInCollectionAction"/>
+
+		<accion nombre="save"
+			clase="org.openxava.actions.SaveElementInCollectionAction"/>			
+									
+		<accion nombre="remove" confirmar="true"
+			clase="org.openxava.actions.RemoveElementFromCollectionAction"/>
+						
+		<accion nombre="edit" imagen="edit.gif"
+			icono="pencil"
+			clase="org.openxava.actions.EditElementInCollectionAction"/>					
+									
+		<accion nombre="view" imagen="view.gif"
+			icono="eye"
+			clase="org.openxava.actions.ViewElementInCollectionAction"/>
+			
+		<accion nombre="removeSelected" confirmar="true"
+			icono="delete" 
+			imagen="delete.gif" en-cada-fila="true"
+			clase="org.openxava.actions.RemoveSelectedInCollectionAction"/>											
+	</controlador>
+    
+    
+    <controlador nombre="CancelarSeleccionDesdeLista">
+    	<accion nombre="cancel" clase="org.openxava.base.actions.DeseleccionarYCancelarAction"/>			
+	</controlador>
+    
+    <controlador nombre="ElementoColeccion">
+		<accion nombre="removeSelected" confirmar="false" icono="delete" imagen="delete.gif" en-cada-fila="true" clase="org.openxava.actions.RemoveSelectedInElementCollectionAction"/>
+	</controlador>
+	
+	<controlador nombre="Esquema">
+		<hereda-de controlador="TypicalNotResetOnSave"/>
+    	<accion nombre="new" oculta="true"/>			
+	
+		<accion nombre="delete" oculta="true"/>
+		
+		<accion nombre="deleteSelected" oculta="true"/>
+		
+		<accion nombre="save" modo="detail"
+		    	por-defecto="si-posible" 
+				clase="org.openxava.base.actions.GrabarEsquemaAction"
+				imagen="save.gif"
+				icono="content-save"
+				atajo-de-teclado="Control Alt S">
+				<poner propiedad="refreshAfter" valor="true"/>	
+				<poner propiedad="resetAfter" valor="false"/>	
+		</accion>
+										
+		
+	</controlador>
+	
+	<controlador nombre="ModoListaSinCustomizacion">
+		<accion nombre="inicializar" 
+				oculta="true"
+				al-iniciar="true"
+				clase="org.openxava.base.actions.TabSinCustomizacionAction">				
+		</accion>
+	</controlador>
+	  
+    <controlador nombre="ObjetoNegocio">
+	  <hereda-de controlador="Typical"/>
+		<accion nombre="save" modo="detail"
+		    	por-defecto="si-posible" 
+				clase="org.openxava.base.actions.GrabarObjetoNegocioAction"
+				imagen="save.gif"
+				icono="content-save"
+				atajo-de-teclado="Control Alt S">
+				<poner propiedad="refreshAfter" valor="true"/>	
+				<poner propiedad="resetAfter" valor="false"/>	
+		</accion>
+		<accion nombre="new" 
+				clase="org.openxava.base.actions.CrearObjetoNegocioAction"
+				imagen="new.gif"
+				icono="library-plus"
+				atajo-de-teclado="Control Alt N">
+				<poner propiedad="restoreModel" valor="true"/>	
+		</accion>				
+		<accion nombre="editar" 
+				modo="detail"
+				por-defecto="si-posible" 
+				oculta="true"
+				clase="org.openxava.base.actions.EditarObjetoNegocioAction"
+				atajo-de-teclado="F8">
+		</accion>
+		<accion nombre="deleteSelected"
+		    	modo="list" 
+				clase="org.openxava.actions.DeleteSelectedAction"
+				oculta="true">
+		</accion>
+		
+		<accion nombre="myReports" modo="list"
+			clase="org.openxava.actions.MyReportsAction"
+			imagen="reports.png"
+			icono="library-books">	
+		</accion>
+		
+	</controlador>
+    
+    <controlador nombre="CopiarObjetoNegocio">
+    	<accion nombre="copiar"
+    			modo="detail" 
+				clase="org.openxava.base.actions.CopiarObjetoNegocioAction">
+		</accion>	
+    </controlador>
+    
+    <controlador nombre="ObjetoCodificado">
+		<hereda-de controlador="ObjetoNegocio"/>
+		<accion nombre="new" 
+				clase="org.openxava.negocio.actions.CrearObjetoCodificadoAction"
+				imagen="new.gif"
+				icono="library-plus"
+				atajo-de-teclado="Control Alt N">
+				<poner propiedad="restoreModel" valor="true"/>	
+		</accion>	
+	</controlador>
+    
+    <controlador nombre="ObjetoEstatico">
+		<hereda-de controlador="ObjetoNegocio"/>
+		<accion nombre="new" 
+				clase="org.openxava.base.actions.CrearObjetoEstaticoAction"
+				imagen="new.gif"
+				icono="library-plus"
+				atajo-de-teclado="Control Alt N">
+				<poner propiedad="restoreModel" valor="true"/>	
+		</accion>			
+		<accion nombre="Ver Activos/Inactivos" 
+				modo="list"
+				clase="org.openxava.base.actions.CambiarTabPorEstadoAction">
+		</accion>		
+	</controlador>
+    
+    <controlador nombre="Transaccion">
+		<hereda-de controlador="Typical"/>
+		<accion nombre="CambiarEstado" 
+				modo="detail"
+				por-defecto="si-posible" 
+				clase="org.openxava.base.actions.CambiarEstadoAction"
+				atajo-de-teclado="Control Alt C"> 
+		</accion> 		
+		<accion nombre="save" modo="detail"
+				por-defecto="si-posible" 
+				clase="org.openxava.base.actions.GrabarTransaccionAction"
+				icono="content-save"
+				atajo-de-teclado="Control Alt S">
+				<!--<poner propiedad="refreshAfter" valor="true"/>	
+				<poner propiedad="resetAfter" valor="false"/>-->	
+		</accion>
+		<accion nombre="new"	
+			clase="org.openxava.base.actions.CrearTransaccionAction"
+			icono="library-plus"
+			atajo-de-teclado="Control Alt N">
+			<poner propiedad="restoreModel" valor="true"/>			
+		</accion>
+		<accion nombre="editar" 
+				modo="detail"
+				por-defecto="si-posible" 
+				oculta="true"
+				clase="org.openxava.base.actions.EditarTransaccionAction"
+				atajo-de-teclado="F8">
+		</accion>
+		<accion nombre="confirmar" 
+				modo="detail" 
+				clase="org.openxava.base.actions.ConfirmarTransaccionAction"
+				atajo-de-teclado="Control Alt C"> 
+		</accion>
+		<accion nombre="ImpresionPDF" 
+				modo="detail" 
+				clase="org.openxava.reportes.actions.ReportTransaccionAction"
+				atajo-de-teclado="Control Alt I"> 
+		</accion>
+		<accion nombre="ImpresionPDFseleccionadas" 
+				modo="list" 
+				clase="org.openxava.base.actions.SeleccionarTransaccionesParaImprimirAction"> 
+		</accion>
+		<accion nombre="EMail" 
+				modo="detail"
+				cuesta="true"
+				confirmar="true" 
+				clase="org.openxava.base.actions.EnvioEMailTransaccionAction"
+				atajo-de-teclado="Control Alt E"> 
+		</accion>
+		<accion nombre="anular" 
+				modo="detail" 
+				clase="org.openxava.base.actions.AnularTransaccionAction"
+				confirmar="true"> 
+		</accion>
+		<accion nombre="cancelar" 
+				modo="detail" 
+				clase="org.openxava.base.actions.CancelarTransaccionAction"
+				confirmar="true"> 
+		</accion>
+		
+		<accion nombre="deleteSelected"
+		    	modo="list" 
+				clase="org.openxava.actions.DeleteSelectedAction"
+				oculta="true">
+		</accion>
+		
+		<accion nombre="cambiarNumero" 
+				oculta="true"
+				clase="org.openxava.base.actions.CambiarNumeroTransaccionAction"
+				confirmar="true"> 
+		</accion>
+		
+		<accion nombre="posConfirmacion"
+				oculta="true"
+				clase="org.openxava.base.actions.AccionesPosConfirmarTransaccionAction">
+		</accion>
+		
+		<accion nombre="myReports" modo="list"
+			clase="org.openxava.actions.MyReportsAction"
+			imagen="reports.png"
+			icono="library-books">	
+		</accion>
+	</controlador> 
+    
+    <controlador nombre="Transacciones">
+    	<accion nombre="ImpresionPDF" 
+				oculta="true" 
+				clase="org.openxava.base.actions.MultipleReportTransaccionAction"> 
+		</accion>
+		<accion nombre="ImpresionPDFJuntas" 
+				oculta="true" 
+				clase="org.openxava.base.actions.ConcatReportTransaccionAction"> 
+		</accion>	  
+    </controlador> 
+    
+    <controlador nombre="TransaccionGenerada">
+    	<hereda-de controlador="Transaccion"/>    	
+    	
+    	<accion nombre="new"    			
+			clase="org.openxava.base.actions.CrearTransaccionAction"
+			icono="library-plus"
+			atajo-de-teclado="Control Alt N"
+			oculta="true">
+			<poner propiedad="restoreModel" valor="true"/>			
+		</accion>
+    	
+    	<accion nombre="delete" modo="detail" confirmar="true"
+			clase="org.openxava.base.actions.BorrarTransaccionYVolverAction"
+			imagen="delete.gif"
+			icono="delete"
+			atajo-de-teclado="Control D"/>
+		
+		<accion nombre="return" 
+			clase="org.openxava.base.actions.VolverYEditarAction">		
+		</accion>
+    </controlador>
+    
+      <controlador nombre="TransaccionGeneradaDesdeDialogo">
+    	<hereda-de controlador="TransaccionGenerada"/>    	
+    			
+		<accion nombre="return" 
+			clase="org.openxava.actions.GoListAction">
+		</accion>
+    </controlador>
+    
+    <controlador nombre="ConfirmacionMasiva">
+    	<accion nombre="Confirmar"
+		    	modo="list"
+		    	confirmar="true" 
+		    	cuesta="true"		    	
+				clase="org.openxava.base.actions.ConfirmarTransaccionSeleccionadasAction">
+		</accion>
+    </controlador>
+    
+    <controlador nombre="AnulacionMasiva">
+    	<accion nombre="Anular"
+		    	modo="list"
+		    	confirmar="true" 
+		    	cuesta="true"		    	
+				clase="org.openxava.base.actions.AnularTransaccionSeleccionadasAction">
+		</accion>
+    </controlador>
+    
+    <controlador nombre="TransaccionNroEditable">
+    	<hereda-de controlador="Transaccion"/>
+    	<accion nombre="new"	
+			clase="org.openxava.base.actions.CrearTransaccionAction"
+			icono="library-plus"
+			atajo-de-teclado="Control Alt N">
+			<poner propiedad="restoreModel" valor="true"/>
+			<poner propiedad="numeroEditable" valor="true"/>			
+		</accion>    	
+    </controlador>
+        
+    <controlador nombre="ItemTransaccion">
+        <accion nombre="new" 
+				icono="library-plus"
+				clase="org.openxava.base.actions.CrearItemTransaccionAction"/>
+        
+        <accion nombre="add" imagen="create_new.gif"
+				icono="table-row-plus-after"
+				clase="org.openxava.base.actions.GoAddItemToTransaccionAction"/>
+        
+        <accion nombre="saveAndNext"
+				por-defecto="siempre"
+				clase="org.openxava.base.actions.GrabarItemTransaccionYEditarSiguienteAction"/>
+        
+		<accion nombre="save" 
+				clase="org.openxava.base.actions.GrabarItemTransaccionAction"/>
+		
+		<accion nombre="hideDetail" 
+				clase="org.openxava.base.actions.CerrarItemTransaccionAction"/>
+		
+		<accion nombre="remove" confirmar="true"
+			clase="org.openxava.base.actions.BorrarItemTransaccionAction"/>
+		
+		<accion nombre="removeSelected" confirmar="true"
+				icono="delete" 
+				imagen="delete.gif" en-cada-fila="true"
+				clase="org.openxava.base.actions.BorrarItemTransaccionSeleccionadoAction"/>
+		
+		<accion nombre="edit" imagen="edit.gif"
+			icono="pencil"
+			clase="org.openxava.base.actions.EditarItemTransaccionAction"/>
+		
+		<accion nombre="editNext" imagen="edit.gif"
+				icono="pencil"
+				clase="org.openxava.base.actions.EditarItemTransaccionSiguienteAction"/>	
+				
+		<accion nombre="dividir"
+				clase="org.openxava.negocio.actions.DividirItemInventarioAction"/>	
+	</controlador>
+    
+    <controlador nombre="AgregarItemTransaccion">
+        <hereda-de controlador="AddToCollection"/>
+        <accion nombre="add"
+            	modo="detail"
+            	clase="org.openxava.base.actions.AddItemToTransaccionAction"/>
+    </controlador>
+    
+    <controlador nombre="Base">
+		<accion  nombre="descargarArchivos" 
+			clase="org.openxava.base.actions.DescargarArchivosAction"
+			oculta="true">
+		</accion>	  
+	</controlador>
+	
+	<controlador nombre="TrazabilidadTransaccion">
+		<accion nombre="graficar"
+				modo="detail" 
+				clase="org.openxava.graficosflowchar.actions.GraficarTranzabilidadTrAction">
+		</accion>
+	</controlador>
+	
+    <controlador nombre="ReferenciaTransicion">
+		<accion nombre="buscar" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.base.actions.BuscarTransicionSearchAction">
+		</accion>
+	</controlador>
+    
+    <controlador nombre="ReferenciaDomicilioVenta">
+		<accion nombre="buscar" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.ventas.actions.BuscarDomicilioVentaSearchAction">
+		</accion>
+	</controlador>
+    
+    <controlador nombre="ReferenciaCCImputacionVenta">
+		<accion nombre="buscar" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.cuentacorriente.actions.BuscarCuentaCorrienteVentasSearchAction">
+		</accion>
+	</controlador>
+    
+    <controlador nombre="ReferenciasItemIngresoValores">
+    	<accion nombre="buscarDestino" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.tesoreria.actions.BuscarDestinoIngresoSearchAction">
+		</accion>
+	</controlador>
+    
+    <controlador nombre="ReferenciasItemEgresoValores">
+    	<accion nombre="buscarOrigen" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.tesoreria.actions.BuscarOrigenEgresoSearchAction">
+		</accion>
+		<accion nombre="buscarValor" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.tesoreria.actions.BuscarValorEgresoSearchAction">
+		</accion>
+		<accion nombre="buscarChequera" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.tesoreria.actions.BuscarChequeraSearchAction">
+		</accion>
+	</controlador>
+    
+    <controlador nombre="ReferenciasTransferenciaValores">
+    	<accion nombre="buscarValor" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.tesoreria.actions.BuscarValorTransferenciaSearchAction">
+		</accion>
+	</controlador>
+    
+    <controlador nombre="ReferenciasEmpresa">
+    	<accion nombre="buscarEmpresa" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.base.actions.BuscarEmpresaSearchAction">
+		</accion>				
+    </controlador>
+    
+    <controlador nombre="ReferenciasRechazoValoresTercero">
+    	<accion nombre="buscarCheque" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.tesoreria.actions.BuscarChequeTerceroRechazoValoresSearchAction">
+		</accion>
+	</controlador>
+    
+    <controlador nombre="ReferenciaProductoFiltroPorDeposito">
+		<accion nombre="buscar" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.inventario.actions.BuscarProductoConStockSearchAction">
+		</accion>
+	</controlador>
+	
+	<controlador nombre="ReferenciaDespachoPorProducto">
+		<accion nombre="buscar" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.inventario.actions.BuscarDespachoPorProductoSearchAction">
+		</accion>
+	</controlador>
+	
+        
+    <controlador nombre="PedidoVenta">
+		<accion nombre="add" 
+		    	oculta="true" 
+		    	icono="table-row-plus-after"
+				clase="org.openxava.ventas.actions.GoAddProductosToPedidoVentaAction"/>		
+	</controlador>
+    
+    <controlador nombre="AgregarProductosPedidoVenta">
+        <hereda-de controlador="AddToCollection"/>
+        <accion nombre="add"
+            	modo="detail"
+            	clase="org.openxava.ventas.actions.AddProductosToPedidoVentaAction"/>
+         <accion nombre="cancel"
+            	modo="detail"
+            	clase="org.openxava.actions.CancelFromCustomListAction"/> 
+    </controlador>
+    
+    <controlador nombre="ImpresionesContables">
+		<accion nombre="BalanceSumasSaldos" 
+				modo="detail" 
+				clase="org.openxava.reportes.actions.ReportBalanceSumaSaldosAction">
+			<poner propiedad="tipoFormato" valor="pdf"/>	 
+		</accion>
+		<accion nombre="BalanceSumasSaldosExcel" 
+				modo="detail" 
+				clase="org.openxava.reportes.actions.ReportBalanceSumaSaldosAction">
+			<poner propiedad="tipoFormato" valor="excel"/>	 
+		</accion>
+		<accion nombre="CuadroResultado"
+				modo="detail" 
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="ImpresionesContables.ReporteCuadroResultado"/>
+			<poner propiedad="modeloParametros" valor="org.openxava.contabilidad.model.ParametrosReporteImpresionContable"/>	
+			<poner propiedad="vistaParametros" valor="TipoFecha"/>			
+		</accion>
+		<accion nombre="ReporteCuadroResultado" 
+			oculta="true"
+				clase="org.openxava.reportes.actions.ReportCuadroResultadoAction">
+			<poner propiedad="tipoFormato" valor="excel"/>
+		</accion>
+				
+	</controlador>
+	
+	<controlador nombre="LibroDiario">
+		<accion nombre="LibroDiario" 
+				modo="detail"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="LibroDiario.Ver"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.contabilidad.model.ParametrosReporteImpresionContable"/>
+			<poner propiedad="vistaParametros" valor="TipoFormato"/>		
+		</accion>
+		
+		<accion nombre="Ver" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportLibroDiarioAction">
+		</accion>
+		
+		<accion nombre="EnumerarLibroDiario" 
+				modo="detail"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="LibroDiario.Enumerar"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.contabilidad.model.ParametrosEnumerarLibroDiario"/>
+		</accion>
+		
+		<accion nombre="Enumerar" 
+				oculta="true"
+				clase="org.openxava.contabilidad.actions.EnumerarLibroDiarioAction">
+		</accion>
+		
+	</controlador>
+	
+    <controlador nombre="EjecucionCambioEstado">
+        <accion nombre="confirmar" 
+				clase="org.openxava.base.actions.ConfirmarCambioEstadoAction"/>	
+		<accion nombre="return" 
+				clase="org.openxava.actions.ReturnAction"/>
+	</controlador>
+        	
+    <controlador nombre="CircuitoPedidoVenta">
+        <accion nombre="GenerarOrdenPreparacion"
+            	modo="list"
+            	confirmar="true" 
+                clase="org.openxava.base.actions.ProcesarPendienteDesdeTransaccionAction">
+                <poner propiedad="tipoTransaccionDestino" valor="OrdenPreparacion"/>
+        </accion>
+    </controlador>
+ 
+ 	<controlador nombre="ReportesPedidoVenta">
+        <accion nombre="ProductosDisponibles" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="ReportesPedidoVenta.VerProductosDisponibles"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.ventas.model.ParametrosReporteProductoDisponibles"/>		
+		</accion>
+		
+		<accion nombre="VerProductosDisponibles"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportProductosDisponiblesAction"/>
+				
+		<accion nombre="VerMapa" 
+				modo="list"
+				clase="org.openxava.negocio.actions.MapaSeleccionadosAction">
+		</accion>		
+    </controlador>
+ 
+    <controlador nombre="Pendiente">
+	  <hereda-de controlador="ExtendedPrint"/>
+		<accion nombre="Cumplir" modo="list" 
+				clase="org.openxava.base.actions.ProcesarPendienteDesdePendienteAction"
+				atajo-de-teclado="Control Alt C">
+		</accion>       
+    </controlador>
+    
+    <controlador nombre="ProcesarItemsPendientes">
+		<accion nombre="CumplirItemsPendientes"
+				clase="org.openxava.base.actions.ProcesarItemsPendientesAction"> 
+		</accion>	
+	</controlador>
+	
+	<controlador nombre="ItemPendienteCancelar">
+		<accion nombre="CancelarPendientes" modo="list"
+				confirmar="true" 
+				clase="org.openxava.base.actions.CancelarItemsPendientesSeleccionadosAction">			
+		</accion>       
+	</controlador>
+    
+    <controlador nombre="CubosTest">
+        <accion nombre="InformesOLAP" 
+                clase="org.openxava.base.actions.CubosEmpresaAction">
+        </accion>
+    </controlador>
+    
+    <controlador nombre="ObjetoEstaticoEstadoActivo">
+        <accion nombre="Cambiar" 
+                clase="org.openxava.base.actions.CambiarEstadoActivoObjetoEstaticoAction"
+                confirmar="true">
+        </accion>
+    </controlador>
+    
+    <controlador nombre="Empresa">
+	  <hereda-de controlador="ObjetoEstatico"/>
+		<accion nombre="new" 
+				clase="org.openxava.base.actions.CrearEmpresaAction"
+				imagen="new.gif"
+				icono="library-plus"
+				atajo-de-teclado="Control Alt N">
+				<poner propiedad="restoreModel" valor="true"/>	
+		</accion>
+		
+		<accion nombre="InformeComprasVentas" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Empresa.EjecutarInformeComprasVentas"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosReporteComprasVentas"/>		
+		</accion>
+		
+		<accion nombre="EjecutarInformeComprasVentas"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportComprasVentasAction"/>
+			
+    </controlador>	
+       
+    <controlador nombre="TransicionEstado">
+	  <hereda-de controlador="ObjetoEstatico"/>
+		<accion nombre="new" 
+				clase="org.openxava.base.actions.CrearTransicionEstadoAction"
+				imagen="new.gif"
+				icono="library-plus"
+				atajo-de-teclado="Control Alt N">
+				<poner propiedad="restoreModel" valor="true"/>	
+		</accion>	
+    </controlador>
+    
+    <controlador nombre="PersonaAfip">
+		<accion  nombre="validarAfip" 
+			clase="org.openxava.afip.actions.ValidarPadronPersonasAfipAction"
+			cuesta="true"
+			oculta="true">
+		</accion>
+	</controlador>
+	
+	<controlador nombre="ItemAcreditarDebitarValores">
+               
+        <accion nombre="add" imagen="create_new.gif"
+			icono="table-row-plus-after"
+			clase="org.openxava.tesoreria.actions.GoAddItemAcreditarDebitarToTransaccionAction"/>
+		
+	</controlador>
+
+	<controlador nombre="Cobranza">
+		<hereda-de controlador="Transaccion"/>
+		<accion nombre="anular" 
+				oculta="true"> 
+		</accion>						
+	</controlador>
+
+	<controlador nombre="EditarGeneradoPor">
+		<accion nombre="buscarObjetoGenerador" 
+				oculta="true"			
+				clase="org.openxava.negocio.actions.BuscarObjetoGeneradorAction"/>
+		<accion nombre="verOrigen" 
+				modo="detail"			
+				clase="org.openxava.negocio.actions.VerObjetoGeneradorAction"
+				atajo-de-teclado="Control Alt V"/> 
+						
+	</controlador>
+	
+	<controlador nombre="EditarGeneradoPorEnColeccion">		
+		<accion nombre="view" 
+				imagen="view.gif"
+				icono="eye"			
+				clase="org.openxava.negocio.actions.VerObjetoGeneradorItemColeccionAction"/> 						
+	</controlador>
+	
+	<controlador nombre="EjercicioContable">
+	  <hereda-de controlador="ObjetoEstatico"/>
+		<accion nombre="save" modo="detail"
+		    	por-defecto="si-posible" 
+				clase="org.openxava.contabilidad.actions.GrabarEjercicioContableAction"
+				imagen="save.gif"
+				icono="content-save"
+				atajo-de-teclado="Control Alt S">
+				<poner propiedad="refreshAfter" valor="true"/>	
+				<poner propiedad="resetAfter" valor="false"/>	
+		</accion>
+		<accion nombre="ConsolidarAsientos"
+    			modo="detail"
+    			confirmar="true"	
+				clase="org.openxava.contabilidad.actions.ConsolidarAsientosAction">			
+		</accion>
+		<accion nombre="SaldosPeriodos"
+    			modo="detail"
+    			confirmar="true"	
+				clase="org.openxava.reportes.actions.ReportSaldosPeriodoContableAction">			
+		</accion>		
+    </controlador>
+ 
+	<controlador nombre="ColeccionPeriodosContables">
+		<accion nombre="new" imagen="create_new.gif"
+			icono="library-plus"
+			clase="org.openxava.contabilidad.actions.CreatePeriodoContableInCollectionAction"/>
+	
+		<accion nombre="edit" imagen="edit.gif"
+			icono="pencil"
+			clase="org.openxava.contabilidad.actions.EditPeriodoContableCollectionAction"/> 
+ 	</controlador>
+ 
+ 	<controlador nombre="AfipRegInfoCompraVenta">
+ 		<accion nombre="RegimenInformacionCompraVenta" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="AfipRegInfoCompraVenta.Generar"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.contabilidad.model.RegimenInformacionCompraVenta"/>		
+		</accion>
+		
+		<accion nombre="Generar"
+				oculta="true"
+				cuesta="true"
+				clase="org.openxava.afip.actions.InterfazRegimenInformacionCompraVentaAction"/>
+ 	</controlador>
+ 
+ 	<controlador nombre="AfipRetencionesSufridas">
+ 		<accion nombre="RetencionesARBA" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="AfipRetencionesSufridas.GenerarRetencionesARBA"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.afip.model.InterfazRetPercSufridasAfip"/>		
+		</accion>
+				
+			<accion nombre="GenerarRetencionesARBA"
+					oculta="true"
+					cuesta="true"
+					clase="org.openxava.afip.actions.GenerarRetencionesPercepcionesAction">
+				<poner propiedad="tipoInterfaz" valor="RetencionesARBA"/>	
+			</accion>
+		
+		<accion nombre="PercepcionesARBA" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="AfipRetencionesSufridas.GenerarPercepcionesARBA"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.afip.model.InterfazRetPercSufridasAfip"/>		
+		</accion>
+				
+			<accion nombre="GenerarPercepcionesARBA"
+					oculta="true"
+					cuesta="true"
+					clase="org.openxava.afip.actions.GenerarRetencionesPercepcionesAction">
+				<poner propiedad="tipoInterfaz" valor="PercepcionesARBA"/>	
+			</accion>	
+ 	</controlador>
+ 
+ 	<controlador nombre="AsientoPlantilla">
+	  <hereda-de controlador="ObjetoNegocio"/>
+		<accion nombre="generarAsiento" 
+		    	clase="org.openxava.contabilidad.actions.GenerarAsientoDesdePlantillaAction">
+		</accion>
+    </controlador>
+    
+    <controlador nombre="Cotizacion">
+	  <hereda-de controlador="ObjetoNegocio"/>
+		<accion nombre="save" modo="detail"
+		    	por-defecto="si-posible" 
+				clase="org.openxava.negocio.actions.GrabarCotizacionAction"
+				imagen="save.gif"
+				icono="content-save"
+				atajo-de-teclado="Control Alt S">
+				<poner propiedad="refreshAfter" valor="true"/>	
+				<poner propiedad="resetAfter" valor="false"/>	
+		</accion>
+	</controlador>  
+    
+    <controlador nombre="Imputaciones">
+    	<accion nombre="imputarSeleccionadas" modo="list"
+		    	clase="org.openxava.cuentacorriente.actions.ImputarComprobantesSeleccionadasAction"
+				atajo-de-teclado="Control Alt I">
+		</accion>		
+    </controlador>
+    
+    <controlador nombre="ImputacionesVenta">
+	  <hereda-de controlador="Imputaciones"/>
+	  	<accion nombre="imputarTodo" modo="list"
+		    	clase="org.openxava.cuentacorriente.actions.ImputarComprobantesPendientesAction"
+		    	confirmar="true"
+				cuesta="true">
+				<poner propiedad="ordenarPor" valor="cliente_id"/>
+		</accion>
+    </controlador>
+    
+    <controlador nombre="ImputacionesCompra">
+	  <hereda-de controlador="Imputaciones"/>
+	  	<accion nombre="imputarTodo" modo="list"
+		    	clase="org.openxava.cuentacorriente.actions.ImputarComprobantesPendientesAction"
+		    	confirmar="true"
+				cuesta="true">
+				<poner propiedad="ordenarPor" valor="proveedor_id"/>
+		</accion>
+    </controlador>
+    
+    
+    <controlador nombre="Producto">
+	  <hereda-de controlador="ObjetoEstatico"/>
+		<accion nombre="new" 
+				clase="org.openxava.ventas.actions.CrearProductoAction"
+				imagen="new.gif"
+				icono="library-plus"
+				atajo-de-teclado="Control Alt N">
+				<poner propiedad="restoreModel" valor="true"/>	
+		</accion>
+		<accion nombre="ImportarCSV" 
+				modo="list"
+				atajo-de-teclado="Control Alt V"
+				clase="org.openxava.ventas.actions.ImportarProductoCSVAction"> 
+		</accion>
+		
+		<accion nombre="ImpresionEtiquetas" 
+				modo="list"
+				atajo-de-teclado="Control Alt E"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Producto.GenerarEtiquetas"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.ventas.model.ParametrosImpresionEtiquetas"/>
+			<poner propiedad="objetosSeleccionadosObligatorios" valor="true"/>		
+		</accion>
+		
+		<accion nombre="ImpresionEtiquetas2" 
+				modo="list"
+				atajo-de-teclado="Control Alt R"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Producto.GenerarEtiquetas2"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.ventas.model.ParametrosImpresionEtiquetas"/>
+			<poner propiedad="objetosSeleccionadosObligatorios" valor="true"/>		
+		</accion>
+		
+		<accion nombre="GenerarEtiquetas"
+				oculta="true"
+				clase="org.openxava.ventas.actions.EjecutarReportEtiquetasProductoAction"/>
+		
+		<accion nombre="GenerarEtiquetas2"
+				oculta="true"
+				clase="org.openxava.ventas.actions.EjecutarReportEtiquetasProductoAction">
+			<poner propiedad="numero" valor="2"/>	
+		</accion>		
+				
+		<accion nombre="ReportEtiquetas"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportEtiquetasProductoAction"/>		
+				
+    </controlador>
+    
+    <controlador nombre="ProcesarCSVProducto">
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.ventas.actions.ProcesarCSVProductoAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+    
+    <controlador nombre="VentaCAE">
+    	<hereda-de controlador="Transaccion"/>
+			<accion nombre="new"	
+				clase="org.openxava.ventas.actions.CrearVentaCAEAction"
+				icono="library-plus"
+				atajo-de-teclado="Control Alt N">
+				<poner propiedad="restoreModel" valor="true"/>			
+			</accion>
+			<accion nombre="solicitarCAE" 
+				modo="detail" 
+				clase="org.openxava.ventas.actions.SolicitarCAEAction"
+				confirmar="true"
+				atajo-de-teclado="Control Alt C"> 
+			</accion>
+    </controlador>
+    
+    <controlador nombre="VentaCAEGenerado">
+    	<hereda-de controlador="VentaCAE"/>
+			<accion nombre="new"    			
+				clase="org.openxava.base.actions.CrearTransaccionAction"
+				icono="library-plus"
+				atajo-de-teclado="Control Alt N"
+				oculta="true">
+				<poner propiedad="restoreModel" valor="true"/>			
+			</accion>
+    		    		
+    		<accion nombre="delete" modo="detail" confirmar="true"
+				clase="org.openxava.base.actions.BorrarTransaccionYVolverAction"
+				imagen="delete.gif"
+				icono="delete"
+				atajo-de-teclado="Control D">
+				<poner propiedad="accionVolver" valor="VentaCAEGenerado.return"/>	
+			</accion>
+		
+			<accion nombre="return" 
+				clase="org.openxava.base.actions.VolverYEditarAction">
+				<poner propiedad="accionEditar" valor="Transaccion.editar"/>
+			</accion>
+    </controlador>
+    
+    <controlador nombre="FacturaVenta">
+    	<accion nombre="GenerarCredito" 
+				modo="detail" 
+				clase="org.openxava.ventas.actions.GenerarCreditoVentaAction"
+				confirmar="true"> 
+		</accion>
+    </controlador>
+    
+    <controlador nombre="FacturaVentaContado">
+    	<hereda-de controlador="Transaccion"/>
+    	<accion nombre="new"	
+				clase="org.openxava.ventas.actions.CrearFacturaVentaContadoAction"
+				icono="library-plus"
+				atajo-de-teclado="Control Alt N">
+				<poner propiedad="restoreModel" valor="true"/>			
+		</accion>		
+    	<accion nombre="confirmar" 
+				modo="detail" 
+				clase="org.openxava.ventas.actions.SolicitarCAEFacturaContadoAction"
+				atajo-de-teclado="Control Alt C"> 
+		</accion>
+    	<accion nombre="GenerarCredito" 
+				modo="detail" 
+				clase="org.openxava.ventas.actions.GenerarCreditoVentaAction"
+				confirmar="true"> 
+		</accion>
+		<accion nombre="ModificarCobranza" 
+				modo="detail" 
+				clase="org.openxava.ventas.actions.ReGenerarReciboCobranzaFacturaContadoAction"
+				confirmar="true"> 
+		</accion>
+		<accion nombre="GenerarReciboCobranza" 
+				modo="detail" 
+				clase="org.openxava.ventas.actions.GenerarReciboCobranzaFacturaContadoAction"
+				oculta="true"> 
+		</accion>
+		<accion nombre="Devolucion" 
+				modo="detail" 
+				clase="org.openxava.ventas.actions.DevolucionFacturaContadoAction"
+				confirmar="true"> 
+		</accion>						
+    </controlador>
+    
+    <controlador nombre="ReciboFacturaContado">
+		<accion nombre="confirmar" 
+				modo="detail" 
+				clase="org.openxava.ventas.actions.ConfirmarReciboFacturaContadoAction"
+				atajo-de-teclado="Control Alt C"> 
+		</accion>
+		
+		<accion nombre="return" 			
+			clase="org.openxava.ventas.actions.VolverFacturaContadoAction">
+		</accion>
+		
+		<accion nombre="saveAndStay"
+			oculta="true"
+			clase="org.openxava.ventas.actions.GrabarContinuarItemReciboFacturaContadoAction"/>	
+				
+	</controlador>
+    
+    <controlador nombre="Valores">    	
+    	<accion nombre="ReporteCheques"
+    			modo="list"	
+				clase="org.openxava.reportes.actions.ReportChequesAction"				
+				atajo-de-teclado="Control Alt C"
+				confirmar="true">			
+		</accion>
+    </controlador>
+	
+	<controlador nombre="AccionTransferirValores">
+		<accion nombre="Transferir"
+    			modo="list"	
+				clase="org.openxava.tesoreria.actions.TransferirValoresAction">			
+		</accion>
+		
+		<accion nombre="confirmar"
+				clase="org.openxava.tesoreria.actions.ConfirmarTransferirValoresAction"								
+				oculta="true">			
+		</accion>
+		
+	</controlador>	
+	
+	<controlador nombre="PuntoVenta">
+    	<hereda-de controlador="ObjetoEstatico"/>
+			<accion nombre="save" modo="detail"
+		    	por-defecto="si-posible" 
+				clase="org.openxava.ventas.actions.GrabarPuntoVentaAction"
+				imagen="save.gif"
+				icono="content-save"
+				atajo-de-teclado="Control Alt S">
+					<poner propiedad="refreshAfter" valor="true"/>	
+					<poner propiedad="resetAfter" valor="false"/>	
+			</accion>
+	</controlador>
+	
+	<controlador nombre="ReporteCaja">
+		<accion nombre="CajaDiaria" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="ReporteCaja.Ejecutar"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.tesoreria.model.ParametrosReporteCajaDiaria"/>		
+		</accion>
+		
+		<accion nombre="Ejecutar"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportCajaDiarioAction"/> 		
+	</controlador>  
+	
+	<controlador nombre="ReporteCuentaBancaria">
+		<accion nombre="ResumenCuenta" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="ReporteCuentaBancaria.Ejecutar"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>
+			<poner propiedad="objetosSeleccionadosObligatorios" valor="true"/>
+			<poner propiedad="vistaParametros" valor="RangoFechaConFormato"/>		
+		</accion>
+		
+		<accion nombre="Ejecutar"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportResumenCuentaBancariaAction"/> 		
+	</controlador>  
+	
+	<controlador nombre="CuentaContable">
+	
+		<accion nombre="MayorSeleccionados" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="CuentaContable.EjecutarMayor"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>
+			<poner propiedad="objetosSeleccionadosObligatorios" valor="true"/>					
+		</accion>
+		
+		<accion nombre="MayorLista" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="CuentaContable.EjecutarMayorTodos"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>					
+		</accion>
+					
+		<accion nombre="EjecutarMayor"
+				oculta="true"
+				clase="org.openxava.contabilidad.actions.EjecutarReporteMayorAction"/>
+				
+		<accion nombre="EjecutarMayorTodos"
+				oculta="true"				
+				clase="org.openxava.contabilidad.actions.EjecutarReporteMayorAction">
+			<poner propiedad="tabCompleto" valor="true"/>	
+		</accion>			
+		
+		<accion nombre="ReportMayor"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportMayorContableAction"/>
+	
+		<accion nombre="SincronizarNiveles" 
+				modo="list"
+				confirmar="true"
+				cuesta="true"
+				clase="org.openxava.contabilidad.actions.SincronizarNivelesEnCuentaAction">						
+		</accion>
+	</controlador>
+		
+	<controlador nombre="SubdiarioIVA">
+		<accion nombre="GenerarPDF" 
+				modo="detail" 
+				clase="org.openxava.reportes.actions.ReportSubdiarioAction">
+			<poner propiedad="tipoFormato" valor="pdf"/>	 
+		</accion>
+		<accion nombre="GenerarExcel" 
+				modo="detail" 
+				clase="org.openxava.reportes.actions.ReportSubdiarioAction">
+			<poner propiedad="tipoFormato" valor="excel"/> 
+		</accion>
+	</controlador>
+	
+	<controlador nombre="ComprobantesPorPagar">
+		<accion nombre="add" 
+		    	oculta="true" 
+		    	icono="table-row-plus-after"
+				clase="org.openxava.compras.actions.GoAddCuentaCorrienteCompraToTransaccionAction"/>
+				
+		<accion nombre="remove" 
+		    	confirmar="true"
+				clase="org.openxava.compras.actions.RemoveCuentaCorrienteCompraToTransaccionAction"/>
+				
+		<accion nombre="removeSelected" 
+		    	oculta="true" 
+		    	confirmar="true"
+		    	icono="delete" 
+				imagen="delete.gif" 
+				en-cada-fila="true"
+				clase="org.openxava.compras.actions.RemoveSelectedCuentaCorrienteCompraToTransaccionAction"/>				
+	</controlador>
+	
+	<controlador nombre="AgregarComprobantesPorPagar">
+        <hereda-de controlador="AgregarItemTransaccion"/>
+        <accion nombre="add"
+            	modo="detail"
+            	clase="org.openxava.compras.actions.AddCuentaCorrienteCompraToTransaccionAction"/>
+        <accion nombre="cancel"
+            	modo="detail"
+            	clase="org.openxava.actions.CancelFromCustomListAction"/> 
+    </controlador>
+
+	<controlador nombre="PagoProveedores">
+		<accion nombre="RetencionesPDF"
+            	modo="detail"            	
+            	clase="org.openxava.reportes.actions.ReportRetencionesPagoAction"
+            	atajo-de-teclado="Control Alt R"/>
+        
+        <accion nombre="InterfazBanco" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="PagoProveedores.GenerarInterfazBanco"/>
+			<poner propiedad="modeloParametros" valor="org.openxava.tesoreria.model.ParametrosBanco"/>
+			<poner propiedad="objetosSeleccionadosObligatorios" valor="true"/>
+		</accion>
+        
+        <accion nombre="GenerarInterfazBanco"
+				oculta="true"
+				clase="org.openxava.reportes.actions.EjecutarReportBaseMultipleTabAction">
+				<poner propiedad="accionReporte" valor="PagoProveedores.GenerarArchivoInterfazBanco"/>	
+		</accion>
+            	
+    	<accion nombre="GenerarArchivoInterfazBanco"
+				oculta="true"
+				clase="org.openxava.tesoreria.actions.IntefazPagosBancoAction"> 
+		</accion>		       	
+	</controlador>
+	
+	<controlador nombre="ImportarCSVItemTransaccion">
+		<accion nombre="ImportarItemsCSV" 
+				modo="detail"
+				atajo-de-teclado="Control Alt V"
+				clase="org.openxava.base.actions.ImportarItemTransaccionCSVAction"> 
+		</accion>
+	</controlador>
+	
+	<controlador nombre="ProcesarCSVItemTransaccion">
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.base.actions.ProcesarCSVItemTransaccionAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+	
+	<controlador nombre="ImpresionCreditoDebitoVenta">
+		<accion nombre="ImpresionTextoPDF" 
+				modo="detail" 
+				clase="org.openxava.reportes.actions.ReportCreditoDebitoTextoAction"
+				atajo-de-teclado="Control Alt O"> 
+		</accion>
+	</controlador>
+	
+	<controlador nombre="PendienteLiquidacionConsignacionPorItemYPorCabecera">
+		<accion nombre="ConsignacionesPDF" 
+				modo="list" 
+				clase="org.openxava.negocio.actions.ParametrosReporteAction"
+				atajo-de-teclado="Control Alt I">
+			<poner propiedad="accionReporte" valor="PendienteLiquidacionConsignacionPorItemYPorCabecera.Consignaciones"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.inventario.model.ParametrosConsignacionesPendientes"/>
+			<poner propiedad="objetosSeleccionadosObligatorios" valor="true"/>	
+		</accion>
+				
+		<accion nombre="Consignaciones"
+				oculta="true"				
+				clase="org.openxava.inventario.actions.EjecutarReportConsignacionesAction"/>
+		
+		<accion nombre="ReportConsignaciones"
+				oculta="true"
+				cuesta="true"
+				clase="org.openxava.reportes.actions.ReportConsignacionesPendientesAction"/>		
+	</controlador>
+	
+	<controlador nombre="ItemPendienteLiquidacionConsignacion">
+		<accion nombre="Cumplir" modo="list" 
+				clase="org.openxava.base.actions.ProcesarItemPendienteSeleccionadosAction"
+				atajo-de-teclado="Control Alt C">
+			<poner propiedad="metodoInstanciarItemPendiente" valor="itemPendienteLiquidacionProxy"/>
+		</accion>       
+	</controlador>
+	
+	<controlador nombre="PendienteLiquidacionConsignacionAgrupado">
+		<accion nombre="ImportarCSV" 
+				modo="list"
+				atajo-de-teclado="Control Alt C"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+			<poner propiedad="nombreControlador" valor="ProcesarCSVItemPendienteLiquidacionConsignacion"/>	
+		</accion>		
+	</controlador>
+	
+	<controlador nombre="ProcesarCSVItemPendienteLiquidacionConsignacion">
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.inventario.actions.ProcesarCSVItemPendLiqConsigAction"> 
+			</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>			
+	</controlador>
+	
+	<controlador nombre="ModificarNumeroValor">
+		<accion nombre="Cambiar"  
+				clase="org.openxava.tesoreria.actions.ParametrosCambioAtributosValorAction">
+			<poner propiedad="accion" valor="ModificarNumeroValor.Confirmar"/>
+			<poner propiedad="nombreVistaValor" valor="CambioNumero"/>				
+		</accion>   
+		
+		<accion nombre="Confirmar"  
+				clase="org.openxava.tesoreria.actions.ModificarNumeroValorAction">				
+		</accion>
+	</controlador>	
+		    
+	<controlador nombre="ModificarVencimientoValor">	    
+		<accion nombre="Cambiar"  
+			clase="org.openxava.tesoreria.actions.ParametrosCambioAtributosValorAction">
+			<poner propiedad="accion" valor="ModificarVencimientoValor.Confirmar"/>
+			<poner propiedad="nombreVistaValor" valor="CambioVencimiento"/>		
+		</accion>       
+				
+		<accion nombre="Confirmar"  
+				clase="org.openxava.tesoreria.actions.ModificarVencimientoValorAction">				
+		</accion>
+	</controlador>
+		      
+	<controlador nombre="ListaPrecio">
+		<hereda-de controlador="ObjetoEstatico"/>
+			<accion nombre="new" 
+				clase="org.openxava.ventas.actions.CrearListaPrecioAction"
+				imagen="new.gif"
+				icono="library-plus"
+				atajo-de-teclado="Control Alt N">
+				<poner propiedad="restoreModel" valor="true"/>	
+			</accion>
+			<accion nombre="editar" 
+				modo="detail"
+				por-defecto="si-posible" 
+				oculta="true"
+				clase="org.openxava.ventas.actions.EditarListaPrecioAction"
+				atajo-de-teclado="F8">
+			</accion>
+			<accion nombre="ImportarCSV" 
+				modo="list"
+				atajo-de-teclado="Control Alt V"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVPrecio"/>	
+			</accion>	
+			<accion nombre="ProductosSinPrecio"  
+				modo="list"			
+				clase="org.openxava.reportes.actions.ReportProductosSinPrecioAction">				
+			</accion>
+			
+			<accion nombre="PDF" 
+				modo="detail"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+					<poner propiedad="accionReporte" valor="ListaPrecio.EjecutarPDF"/>	
+					<poner propiedad="modeloParametros" valor="org.openxava.ventas.model.ParametrosReporteListaPrecio"/>		
+			</accion>
+		
+			<accion nombre="Excel" 
+				modo="detail"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+					<poner propiedad="accionReporte" valor="ListaPrecio.EjecutarExcel"/>	
+					<poner propiedad="modeloParametros" valor="org.openxava.ventas.model.ParametrosReporteListaPrecio"/>		
+			</accion>
+		
+			<accion nombre="EjecutarPDF"
+				oculta="true"	
+				clase="org.openxava.reportes.actions.ReportListaPrecioAction">
+					<poner propiedad="tipoFormato" valor="pdf"/>
+			</accion>
+			
+			<accion nombre="EjecutarExcel" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportListaPrecioAction">
+					<poner propiedad="tipoFormato" valor="excel"/>
+			</accion>						
+	</controlador>
+	
+	<controlador nombre="ProcesarCSVPrecio">
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.ventas.actions.ProcesarCSVPrecioAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+		
+	<controlador nombre="ReferenciaClienteEnVenta">
+		<accion nombre="buscar" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.ventas.actions.BuscarClienteEnVentaSearchAction">
+		</accion>
+	</controlador>
+	
+	<controlador nombre="ReporteFacturacionVenta">
+		<accion nombre="FacturacionVenta" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="ReporteFacturacionVenta.Ejecutar"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.ventas.model.ParametrosReporteFacturacionVenta"/>		
+		</accion>
+		
+		<accion nombre="Ejecutar"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportFacturacionVentaAction"/> 		
+	</controlador>
+	
+	<controlador nombre="Desguace">
+		<accion nombre="AgregarPartes" modo="detail"
+				clase="org.openxava.inventario.actions.AgregarPartesDesguaceAction"
+				atajo-de-teclado="Control Alt A">
+		</accion>  
+	</controlador>
+	
+	<controlador nombre="Armado">
+		<accion nombre="AgregarComponentes" modo="detail"
+				clase="org.openxava.inventario.actions.AgregarComponentesParaArmarAction"
+				atajo-de-teclado="Control Alt A">
+		</accion>  
+	</controlador>
+	
+	<controlador nombre="CarritoCompras">
+		<accion nombre="inicializar" 
+				oculta="true"
+				al-iniciar="true"
+				clase="org.openxava.carritocompras.actions.InicializarCarritoComprasAction">				
+		</accion>
+	</controlador>
+	
+	<controlador nombre="ConfiguracionEntidad">
+		<hereda-de controlador="ObjetoNegocio"/>		
+		<accion nombre="GenerarCircuito" 
+				modo="list"
+				clase="org.openxava.base.actions.GenerarCircuitoDesdeEntidadAction">				
+		</accion>
+		
+		<accion nombre="RegenerarAsientos" 
+				modo="detail"
+				cuesta="true"
+				confirmar="true"
+				clase="org.openxava.contabilidad.actions.RegenerarAsientosContables">				
+		</accion>		
+	</controlador>
+	
+	<controlador nombre="SaldoCuentaCorrienteVenta">
+		<accion nombre="Saldos" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="SaldoCuentaCorrienteVenta.VerSaldos"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.cuentacorriente.model.ParametrosReporteCuentaCorrienteVenta"/>		
+		</accion>
+		
+		<accion nombre="SaldosExcel" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="SaldoCuentaCorrienteVenta.VerSaldosExcel"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.cuentacorriente.model.ParametrosReporteCuentaCorrienteVenta"/>		
+		</accion>
+		
+			<accion nombre="VerSaldos"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportSaldosCuentaCorrienteVentasAction"/>
+			
+			<accion nombre="VerSaldosExcel"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportSaldosCuentaCorrienteVentasAction">
+			    <poner propiedad="formato" valor="excel"/>	
+			</accion>	
+				
+		<accion nombre="DetalleExcel" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="SaldoCuentaCorrienteVenta.GenerarExcel"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.cuentacorriente.model.ParametrosReporteSaldoCtaCtePorCliente"/>
+			<poner propiedad="objetosSeleccionadosObligatorios" valor="true"/>		
+		</accion>
+		
+			<accion nombre="GenerarExcel"
+				oculta="true"
+				clase="org.openxava.reportes.actions.EjecutarReportBaseMultipleTabAction">
+				<poner propiedad="accionReporte" valor="SaldoCuentaCorrienteVenta.ReportSaldoCtaCtePorCliente"/>	
+			</accion>
+		
+			<accion nombre="ReportSaldoCtaCtePorCliente"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportSaldoCtaCtePorClienteAction"/>
+		
+		<accion nombre="SaldosFecha" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="SaldoCuentaCorrienteVenta.ExcelSaldosFecha"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.cuentacorriente.model.ParametrosReporteSaldoFechaCtaCteVenta"/>		
+		</accion>		
+			
+			<accion nombre="ExcelSaldosFecha"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportSaldoFechaCtaCteVentasAction"/>
+								
+	</controlador> 
+	
+	<controlador nombre="SaldoCuentaCorrienteCompra">
+		<accion nombre="DetalleExcel" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="SaldoCuentaCorrienteCompra.GenerarExcel"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.cuentacorriente.model.ParametrosReporteSaldoCtaCtePorProveedor"/>
+			<poner propiedad="objetosSeleccionadosObligatorios" valor="true"/>		
+		</accion>
+		
+			<accion nombre="GenerarExcel"
+				oculta="true"
+				clase="org.openxava.reportes.actions.EjecutarReportBaseMultipleTabAction">
+				<poner propiedad="accionReporte" valor="SaldoCuentaCorrienteCompra.ReportSaldoCtaCtePorProveedorExcel"/>	
+			</accion>
+		
+			<accion nombre="ReportSaldoCtaCtePorProveedorExcel"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportSaldoCtaCtePorProveedorAction">
+				<poner propiedad="formato" valor="EXCEL"/>
+			</accion>
+		
+		<accion nombre="DetallePDF" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="SaldoCuentaCorrienteCompra.GenerarPDF"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.cuentacorriente.model.ParametrosReporteSaldoCtaCtePorProveedor"/>
+			<poner propiedad="objetosSeleccionadosObligatorios" valor="true"/>		
+		</accion>
+		
+			<accion nombre="GenerarPDF"
+				oculta="true"
+				clase="org.openxava.reportes.actions.EjecutarReportBaseMultipleTabAction">
+				<poner propiedad="accionReporte" valor="SaldoCuentaCorrienteCompra.ReportSaldoCtaCtePorProveedorPDF"/>	
+			</accion>
+				
+			<accion nombre="ReportSaldoCtaCtePorProveedorPDF"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportSaldoCtaCtePorProveedorAction">
+				<poner propiedad="formato" valor="PDF"/>
+			</accion>
+			
+		<accion nombre="SaldosFecha" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="SaldoCuentaCorrienteCompra.ExcelSaldosFecha"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.cuentacorriente.model.ParametrosReporteSaldoCtaCtePorProveedor"/>		
+		</accion>		
+			
+			<accion nombre="ExcelSaldosFecha"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportSaldoFechaCtaCteComprasAction"/>				
+	</controlador>
+	
+	<controlador nombre="LiquidacionComisionVenta">
+		<accion nombre="GenerarComisiones" 
+				modo="list"
+				clase="org.openxava.ventas.actions.ParametrosGenerarComisionesVentaAction">
+		</accion>
+		<accion nombre="Calcular" 
+				oculta="true"
+				clase="org.openxava.ventas.actions.GenerarComisionesVentaAction">
+		</accion>	
+	</controlador>
+	
+	<controlador nombre="Multiseleccion">
+        <accion nombre="add"
+          	clase="org.openxava.negocio.actions.AddObjetoMultiseleccionAction"/>
+        <accion nombre="cancel"
+           	clase="org.openxava.negocio.actions.CancelMultiseleccionAction"/>
+        <accion nombre="view"
+        	icono="eye" imagen="view.gif"
+        	oculta="true"        
+           	clase="org.openxava.negocio.actions.VerElementoMultiseleccionAction"/>   	
+    </controlador>	
+	
+	<controlador nombre="ColeccionItemsTransaccionProductos">
+		<accion nombre="Multiseleccion"
+			imagen="create_new.gif"
+			icono="table-row-plus-after" 
+			clase="org.openxava.ventas.actions.VerProductosMultiseleccionAction">
+		</accion>
+	</controlador>
+	
+	<controlador nombre="ColeccionItemsDepositoBanco">
+		<accion nombre="Cheques"
+			imagen="create_new.gif"
+			icono="table-row-plus-after" 
+			clase="org.openxava.tesoreria.actions.VerChequesDepositarMultiseleccionAction">
+		</accion>
+	</controlador>
+	
+	<controlador nombre="ColeccionItemsEgresoFinanciero">
+		<accion nombre="Cheques"
+			imagen="create_new.gif"
+			icono="table-row-plus-after" 
+			clase="org.openxava.tesoreria.actions.VerChequesEgresarMultiseleccionAction">
+		</accion>		  
+	</controlador>
+	
+	<controlador nombre="ColeccionItemsPagoProveedores">
+		<accion nombre="Cheques"
+			imagen="create_new.gif"
+			icono="table-row-plus-after" 
+			clase="org.openxava.tesoreria.actions.VerChequesPagoMultiseleccionAction">
+		</accion>		  
+	</controlador>
+	
+	<controlador nombre="ColeccionItemsTransfereciaDeposito">
+		<accion nombre="Multiseleccion"
+			imagen="create_new.gif"
+			icono="table-row-plus-after" 
+			clase="org.openxava.inventario.actions.VerTransferenciasDepositosMultiseleccionAction">
+		</accion>		  
+	</controlador>
+	
+	<controlador nombre="ColeccionItemsLiquidacionConsignacion">
+	    <accion nombre="DevolucionCompleta"
+			clase="org.openxava.inventario.actions.DevolverCompletaLiquidacionAction">
+		</accion>		   
+	</controlador>
+	
+	<controlador nombre="ColeccionCuponesTarjeta">
+		<accion nombre="Multiseleccion"
+			imagen="create_new.gif"
+			icono="table-row-plus-after"			
+			clase="org.openxava.tesoreria.actions.VerCuponesTarjetaAction">
+		</accion>
+		<accion nombre="removeSelected" confirmar="true"
+				icono="delete" 
+				imagen="delete.gif" en-cada-fila="true"
+				clase="org.openxava.tesoreria.actions.BorrarCuponesLiquidacionTarjetaAction"/>
+	</controlador>
+	
+	<controlador nombre="Deposito">
+		<accion nombre="ComparativaStock"
+			modo="list"
+			clase="org.openxava.inventario.actions.SeleccionDepositoComparativaStockAction">
+		</accion>
+		
+		<accion nombre="ReportComparativaDepositos"
+			oculta="true"
+			clase="org.openxava.reportes.actions.ReportComparativaDepositosAction">
+		</accion>
+				  
+	</controlador>
+	
+	<controlador nombre="ComprobantesPorCobrar">
+		<accion nombre="add" 
+		    	oculta="true" 
+		    	icono="table-row-plus-after"
+				clase="org.openxava.ventas.actions.GoAddCuentaCorrienteVentaToTransaccionAction"/>
+				
+		<accion nombre="remove" 
+		    	confirmar="true"
+				clase="org.openxava.ventas.actions.RemoveCuentaCorrienteVentaToTransaccionAction"/>
+				
+		<accion nombre="removeSelected" 
+		    	oculta="true" 
+		    	confirmar="true"
+		    	icono="delete" 
+				imagen="delete.gif" 
+				en-cada-fila="true"
+				clase="org.openxava.ventas.actions.RemoveSelectedCuentaCorrienteVentaToTransaccionAction"/>				
+	</controlador>
+	
+	<controlador nombre="AgregarComprobantesPorCobrar">
+        <hereda-de controlador="AgregarItemTransaccion"/>
+        <accion nombre="add"
+            	modo="detail"
+            	clase="org.openxava.ventas.actions.AddCuentaCorrienteVentaToTransaccionAction"/>
+        <accion nombre="cancel"
+            	modo="detail"
+            	clase="org.openxava.actions.CancelFromCustomListAction"/> 
+    </controlador>
+    
+    <controlador nombre="VentaIntercompany">
+   		<accion nombre="facturacionIntercompany"
+            	modo="detail"
+            	clase="org.openxava.ventas.actions.FacturacionVentaIntercompanyAction"/> 	
+    </controlador>
+	
+	 <controlador nombre="FacturacionIntercompany">
+   		<accion nombre="Generar"
+            	modo="detail"
+            	clase="org.openxava.ventas.actions.GenerarFacturacionVentaIntercompanyAction"/>
+        <accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>    	 	
+    </controlador>
+    
+    
+    <controlador nombre="TestParametros">
+ 		<accion nombre="TestParametros" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="TestParametros.Ejecutar"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Ejecutar"
+				oculta="true"
+				clase="org.openxava.negocio.actions.TestEjecutarParametrosAction"/>
+ 	</controlador>
+    
+    <controlador nombre="AsignarReclamo">
+		<accion nombre="AsignarReclamos"
+			modo="list"
+            cuesta="true"            
+			clase="org.openxava.reclamos.actions.AsignarReclamoAction">
+		</accion>
+		<accion nombre="confirmar"
+			oculta="true"
+			clase="org.openxava.reclamos.actions.GenerarAsignacionReclamoAction">
+		</accion>
+	</controlador>
+	
+	<controlador nombre="ImportarCSVReclamo">
+    	<accion nombre="ImportarReclamos"
+    		modo="list"
+			atajo-de-teclado="Control Alt V"
+    		clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+			<poner propiedad="nombreControlador" valor="ProcesarCSVReclamo"/>	
+    	</accion>
+    </controlador>
+    
+    <controlador nombre="ReclamosListado">
+		<accion nombre="Reclamos" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="ReclamosListado.ReporteReclamos"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.reclamos.model.ParametrosReporteReclamo"/>		
+		</accion>		
+			
+		<accion nombre="ReporteReclamos"
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportReclamosAction"/>				
+	</controlador>
+	    
+    <controlador nombre="ProcesarCSVReclamo">
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.reclamos.actions.ProcesarCSVReclamoAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+	
+	<controlador nombre="CumplirReclamoPendientes">
+    	<accion nombre="Cumplir"
+    		modo="list"
+    		clase="org.openxava.reclamos.actions.CumplirReclamoPendienteAction">
+    	</accion>
+    </controlador>
+    
+    <controlador nombre="ObjetoReclamo">
+		<accion nombre="ImportarCSV" 
+				modo="list"
+				atajo-de-teclado="Control Alt V"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVObjetoReclamo"/>	
+			</accion>
+	</controlador>
+    
+    <controlador nombre="ProcesarCSVObjetoReclamo">
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.reclamos.actions.ProcesarCSVObjetoReclamoAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+	
+	<controlador nombre="ModificarAtributoConAuditoria">
+		<accion nombre="Cambiar"  
+				clase="org.openxava.base.actions.SeleccionarValorParaCambiarAtributoAction">
+			<poner propiedad="accion" valor="ModificarAtributoConAuditoria.Confirmar"/>
+		</accion>   
+		
+		<accion nombre="Confirmar"  
+				clase="org.openxava.base.actions.CambiarAtributoAction">
+		</accion>
+	</controlador>
+	
+	<controlador nombre="ObjetoReclamo">
+		<accion nombre="ImportarCSV" 
+				modo="list"
+				atajo-de-teclado="Control Alt V"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVObjetoReclamo"/>	
+			</accion>
+	</controlador>
+    
+    <controlador nombre="FormatoImportacionCSVproveedores">
+		<accion nombre="ImportarCSV" 
+				modo="list"
+				atajo-de-teclado="Control Alt V"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVProveedor"/>	
+		</accion>
+	</controlador>
+
+	<controlador nombre="ProcesarCSVProveedor">		
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.compras.actions.ProcesarCSVProveedorAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+    
+    <controlador nombre="FormatoImportacionCSVcliente">
+		<accion nombre="ImportarCSV" 
+				modo="list"
+				atajo-de-teclado="Control Alt V"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVCliente"/>	
+		</accion>
+	</controlador>
+
+	<controlador nombre="ProcesarCSVCliente">		
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.ventas.actions.ProcesarCSVClienteAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+        
+    <controlador nombre="FormatoImportacionCSVdespacho">
+		<accion nombre="ImportarCSV" 
+				modo="list"
+				atajo-de-teclado="Control Alt V"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVDespacho"/>	
+		</accion>
+	</controlador>
+
+	<controlador nombre="ProcesarCSVDespacho">		
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.inventario.actions.ProcesarCSVDespachoImportacionAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+    
+    
+    <controlador nombre="FormatoImportacionCSVasiento">		
+		<accion nombre="ImportarCSV" 
+				modo="list"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVAsiento"/>	
+		</accion>		
+	</controlador>
+    
+    <controlador nombre="ProcesarCSVAsiento">		
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.contabilidad.actions.ProcesarCSVAsientoAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+	
+	<controlador nombre="FormatoImportacionCSVproducto">
+		<accion nombre="ImportarCSV" 
+				modo="list"
+				atajo-de-teclado="Control Alt V"
+				clase="org.openxava.ventas.actions.ImportarProductoCSVAction"> 
+		</accion>
+		<accion nombre="ActivarDesactivarCSV" 
+				modo="list"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVActivacionObjetoEstatico"/>	
+		</accion>	
+	</controlador>
+    
+    <controlador nombre="ProcesarCSVActivacionObjetoEstatico">		
+		<accion nombre="ActivarDesactivar"
+				cuesta="true" 
+				clase="org.openxava.base.actions.ProcesarCSVActivacionObjetoEstatico"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+	
+	<controlador nombre="VentaElectronica">
+		<accion  nombre="validar" 
+			clase="org.openxava.ventas.actions.ValidarCuitVentaElectronicaAction"
+			cuesta="true"
+			oculta="true">
+		</accion>
+	</controlador>
+    
+    <controlador nombre="CashFlow">    	
+    	<accion nombre="CashFlow"
+    			modo="list"	
+				clase="org.openxava.reportes.actions.ReportCashFlowAction">			
+		</accion>
+		
+		<accion nombre="HistoricoFinanzas"
+    			modo="list"	
+				clase="org.openxava.reportes.actions.ReportHistoricoFinanzasAction">			
+		</accion>
+    </controlador>
+    
+    <controlador nombre="ConfiguracionCircuito">
+    	<accion nombre="graficar"
+				modo="list" 
+				clase="org.openxava.graficosflowchar.actions.GraficarCircuitosAction">
+		</accion>	
+    </controlador>
+    
+    <controlador nombre="MapaDomicilio">
+    	<accion nombre="verMapa"
+				clase="org.openxava.negocio.actions.MapaDomicilioAction">
+		</accion>
+		<accion nombre="buscar"
+				clase="org.openxava.negocio.actions.BuscarCoordenadasDesdeDomicilioAction">
+		</accion>	
+    </controlador>
+    
+    <controlador nombre="AjusteInflacion">
+    	<accion nombre="GenerarAjusteInflacion" 
+				modo="detail"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="AjusteInflacion.Generar"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.contabilidad.model.ParametrosAjusteInflacion"/>
+		</accion>
+		
+			<accion nombre="Generar"
+				oculta="true"
+				cuesta="true"
+				clase="org.openxava.contabilidad.actions.GenerarAjusteInflacionAction">
+			</accion>
+    			
+		<accion nombre="ImportarIndicesCSV" 
+				modo="detail"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVIndicesInflacion"/>	
+		</accion>
+		
+		<accion nombre="ImportarTipoCuentasAjustablesCSV" 
+				modo="detail"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVCtaContAjustaInflacion"/>	
+		</accion>	
+    </controlador>
+        
+	<controlador nombre="ProcesarCSVIndicesInflacion">		
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.contabilidad.actions.ProcesarCSVIndicesInflacionAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+    
+    <controlador nombre="ProcesarCSVCtaContAjustaInflacion">		
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.contabilidad.actions.ProcesarCSVCuentasAjustaInflacionAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+    
+    <controlador nombre="AsignacionZonaReparto">		
+		<accion nombre="AsignarZona" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="AsignacionZonaReparto.Asignar"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.distribucion.model.ParametrosAsignarZonaReparto"/>
+			<poner propiedad="objetosSeleccionadosObligatorios" valor="true"/>		
+		</accion>
+		
+			<accion nombre="Asignar"
+				oculta="true"
+				clase="org.openxava.distribucion.actions.AsignarZonaRepartoSeleccionAction"/>
+
+		<accion nombre="VerMapa" 
+				modo="list"
+				clase="org.openxava.negocio.actions.MapaSeleccionadosAction">
+		</accion>
+		
+		<accion nombre="AsignarZonaEnMapa" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="AsignacionZonaReparto.AsignarEnMapa"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.distribucion.model.ParametrosAsignarZonaReparto"/>
+			<poner propiedad="objetosSeleccionadosObligatorios" valor="true"/>		
+		</accion>
+			
+			<accion nombre="AsignarEnMapa" 
+				oculta="true"
+				clase="org.openxava.distribucion.actions.AsignarZonaRepartoEnMapaAction">
+				<poner propiedad="classNameMapAction" valor="com.clouderp.maps.actions.polygon.AsignarZonaRepartoPolygonAction"/>	
+			</accion>
+			
+	</controlador>
+	
+	<controlador nombre="ConfiguracionAfip">
+	  <hereda-de controlador="Typical"/>
+	  	<accion nombre="new" oculta="true"/>			
+	
+		<accion nombre="delete" oculta="true"/>
+		
+		<accion nombre="deleteSelected" oculta="true"/>
+		
+		<accion nombre="save" modo="detail"
+		    	por-defecto="si-posible" 
+				clase="org.openxava.actions.SaveAction"
+				imagen="save.gif"
+				icono="content-save"
+				atajo-de-teclado="Control Alt S">
+				<poner propiedad="refreshAfter" valor="true"/>	
+				<poner propiedad="resetAfter" valor="false"/>	
+		</accion>		
+	</controlador>  
+          	
+    <controlador nombre="ConciliacionBancaria">
+    	<accion nombre="Conciliar" 
+				modo="detail"
+				atajo-de-teclado="Control Alt C"
+				clase="org.openxava.conciliacionbancaria.actions.ConciliarBancoAction"> 	
+		</accion>		
+    	<accion nombre="ImportarExtractoCSV" 
+				modo="detail"
+				atajo-de-teclado="Control Alt V"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+			<poner propiedad="nombreControlador" valor="ProcesarCSVExtractoBancario"/>	
+		</accion>
+	</controlador>
+	
+	<controlador nombre="ItemConciliacionBancaria">
+    	<accion nombre="AnularConciliar" 
+				clase="org.openxava.conciliacionbancaria.actions.AnularConciliarBancoAction"> 	
+		</accion>		    	
+	</controlador>
+	
+	<controlador nombre="ProcesarCSVExtractoBancario">
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.conciliacionbancaria.actions.ProcesarCSVExtractoBancarioAction"> 
+			</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>			
+	</controlador>
+	
+	<controlador nombre="DevolucionFacturaContado">
+		<hereda-de controlador="Transaccion"/>
+			<accion nombre="confirmar"
+					modo="detail"
+					clase="org.openxava.ventas.actions.ConfirmarDevolucionFacturaContadoAction"
+					atajo-de-teclado="Control Alt C"> 
+			</accion>
+			<accion nombre="CambiarEstado" 
+				oculta="true"> 
+			</accion>
+			<accion nombre="ImpresionPDF" 
+				modo="detail" 
+				oculta="true"> 
+			</accion>
+			<accion nombre="ImpresionPDFseleccionadas" 
+				oculta="true"> 
+			</accion>
+			
+			<accion nombre="FacturarDevolucion"
+					oculta="true"					
+					clase="org.openxava.ventas.actions.FacturaDevolucionAction"> 
+			</accion>
+						
+			<accion nombre="delete" modo="detail" confirmar="true"
+				clase="org.openxava.base.actions.BorrarTransaccionYVolverAction"
+				imagen="delete.gif"
+				icono="delete"
+				atajo-de-teclado="Control D">
+				<poner propiedad="accionVolver" valor="VentaCAEGenerado.return"/>	
+			</accion>
+		
+			<accion nombre="return" 
+				clase="org.openxava.base.actions.VolverYEditarAction">
+				<poner propiedad="accionEditar" valor="Transaccion.editar"/>
+			</accion>
+						
+	</controlador>
+	
+	<controlador nombre="FacturaVentaContadoGeneradaPorDevolucion">
+    	<hereda-de controlador="FacturaVentaContado"/>
+    	
+    	<accion nombre="return" 
+				clase="org.openxava.base.actions.VolverYEditarAction">
+				<poner propiedad="accionEditar" valor="Transaccion.editar"/>
+		</accion>
+    </controlador>	      	
+    
+    <controlador nombre="ExtractoBancario">
+    	<accion nombre="GenerarMovimientoFinanciero" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="ExtractoBancario.MovimientoFinanciero"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.conciliacionbancaria.model.ParametrosGenerarMovimientoExtractoBancario"/>
+			<poner propiedad="objetosSeleccionadosObligatorios" valor="true"/>
+		</accion>
+		
+		<accion nombre="GeneraMovimientoFinancieroItems" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="ExtractoBancario.MovimientoFinanciero"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.conciliacionbancaria.model.ParametrosGenerarMovimientoExtractoBancario"/>
+			<poner propiedad="vistaParametros" valor="MultiplesConceptos"/>
+			<poner propiedad="objetosSeleccionadosObligatorios" valor="true"/>
+		</accion>
+		
+			<accion nombre="MovimientoFinanciero"
+				oculta="true"
+				cuesta="true"
+				clase="org.openxava.conciliacionbancaria.actions.GenerarMovimientoFinancieroDesdeExtractoAction">
+			</accion>
+				
+		<accion nombre="GenerarCobranza" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="ExtractoBancario.Cobranza"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.conciliacionbancaria.model.ParametrosGenerarCobranzaExtractoBancario"/>
+			<poner propiedad="cantidadObjetosDebeSeleccionar" valor="1"/>
+		</accion>
+			
+			<accion nombre="Cobranza"
+				oculta="true"
+				cuesta="true"
+				clase="org.openxava.conciliacionbancaria.actions.GenerarCobranzaDesdeExtractoAction">
+			</accion>
+		
+		<accion nombre="GenerarPago" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="ExtractoBancario.Pago"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.conciliacionbancaria.model.ParametrosGenerarPagoExtractoBancario"/>
+			<poner propiedad="cantidadObjetosDebeSeleccionar" valor="1"/>
+		</accion>
+			
+			<accion nombre="Pago"
+				oculta="true"
+				cuesta="true"
+				clase="org.openxava.conciliacionbancaria.actions.GenerarPagoDesdeExtractoAction">
+			</accion>
+					 
+    </controlador>
+    
+     <controlador nombre="LoteCreation">
+	  <hereda-de controlador="NewCreation"/>
+		<accion nombre="new" 
+				clase="org.openxava.inventario.actions.CrearLoteDesdeReferenciaAction"
+				oculta="true"
+				atajo-de-teclado="F2">
+		</accion>				
+	</controlador>
+	
+	<controlador nombre="FormatoImportacionCSVlote">
+		<accion nombre="ImportarCSV" 
+				modo="list"
+				atajo-de-teclado="Control Alt V"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVlote"/>	
+		</accion>
+	</controlador>
+
+	<controlador nombre="ProcesarCSVlote">		
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.inventario.actions.ProcesarCSVLoteAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+    
+    <controlador nombre="CentroCostos">		
+		<accion nombre="Graficar"
+				modo="list"
+				clase="org.openxava.graficosflowchar.actions.GraficarDistribucionCentroCostosAction"> 
+		</accion>		
+	</controlador>  
+    
+    <controlador nombre="PendienteControlMercaderia">
+		<accion nombre="CancelarControl" modo="list" 
+				clase="org.openxava.inventario.actions.CancelarPendienteControlMercaderiaAction">
+		</accion>       
+	</controlador>
+	
+	<controlador nombre="CambioChequePropio">
+		<accion nombre="buscarChequeParaCambiar" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.tesoreria.actions.BuscarChequeCambioSearchAction">
+		</accion>	  
+		
+		<accion nombre="buscarChequera" 
+				oculta="true"
+				icono="magnify"
+				imagen="search.gif"
+				clase="org.openxava.tesoreria.actions.BuscarChequeraCambioChequeSearchAction">
+		</accion>	  		
+	</controlador>
+	
+	<controlador nombre="ModificarFechaTransaccion">
+		<accion nombre="Cambiar"  
+				clase="org.openxava.base.actions.SeleccionarValorParaCambiarAtributoAction">
+			<poner propiedad="accion" valor="ModificarFechaTransaccion.Confirmar"/>
+			<poner propiedad="nombreVista" valor="CambioFecha"/>				
+		</accion>   
+		
+		<accion nombre="Confirmar"  
+				clase="org.openxava.base.actions.CambiarAtributoAction">
+			<poner propiedad="nombreAtributo" valor="fecha"/>
+			<poner propiedad="descripcionAtributo" valor="Fecha"/>											
+		</accion>
+	</controlador>
+	
+	<controlador nombre="FormatoImportacionCSVobjetoEstatico">
+		<accion nombre="ImportarCSV" 
+				modo="list"
+				atajo-de-teclado="Control Alt V"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVObjetoEstatico"/>	
+		</accion>
+	</controlador>
+
+	<controlador nombre="ProcesarCSVObjetoEstatico">		
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.negocio.actions.ProcesarCSVObjetoEstaticoAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+	
+	<controlador nombre="FormatoImportacionCSVfacturaCompra">		
+		<accion nombre="ImportarCSV" 
+				modo="list"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVFacturaCompra"/>	
+		</accion>		
+	</controlador>
+    
+    <controlador nombre="ProcesarCSVFacturaCompra">		
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.compras.actions.ProcesarCSVFacturaCompraAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+	
+	<controlador nombre="PublicacionML">
+		<accion nombre="ImportarCSVMercadoLibre" 
+				modo="list"
+				atajo-de-teclado="Control Alt V"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVPublicacionML"/>	
+		</accion>
+
+		<accion nombre="ActualizarPreciosTodos" 
+				modo="list"
+				clase="org.openxava.mercadolibre.actions.ParametrosActualizacionEcommerceAction"> 
+				<poner propiedad="accionActualizar" valor="PublicacionML.ActualizacionEcommerce"/>
+				<poner propiedad="modeloParametros" valor="org.openxava.mercadolibre.model.ParametrosActualizacionEcommerce"/>
+				<poner propiedad="objetosSeleccionadosObligatorios" valor="false"/>
+				<poner propiedad="aModificar" valor="Precio"/>	
+		</accion>
+	
+		<accion nombre="ActualizarPreciosSeleccionados" 
+				modo="list"
+				cuesta="true"
+				confirmar="true"
+				clase="org.openxava.mercadolibre.actions.ActualizarProductosEcommerceAction"> 
+				<poner propiedad="seleccionados" valor="true"/>
+				<poner propiedad="aModificar" valor="Precio"/>	
+		</accion>
+		
+		<accion nombre="ActualizarStockTodos" 
+				modo="list"
+				clase="org.openxava.mercadolibre.actions.ParametrosActualizacionEcommerceAction"> 
+				<poner propiedad="accionActualizar" valor="PublicacionML.ActualizacionEcommerce"/>
+				<poner propiedad="modeloParametros" valor="org.openxava.mercadolibre.model.ParametrosActualizacionEcommerce"/>
+				<poner propiedad="objetosSeleccionadosObligatorios" valor="false"/>
+				<poner propiedad="aModificar" valor="Stock"/>	
+		</accion>
+		
+		<accion nombre="ActualizarStockSeleccionados" 
+				modo="list"
+				cuesta="true"
+				confirmar="true"
+				clase="org.openxava.mercadolibre.actions.ActualizarProductosEcommerceAction"> 
+				<poner propiedad="seleccionados" valor="true"/>
+				<poner propiedad="aModificar" valor="Stock"/>	
+		</accion>
+						
+		<accion nombre="ActualizacionEcommerce" 
+				oculta="true"
+				cuesta="true"
+				clase="org.openxava.mercadolibre.actions.ActualizarProductosEcommerceAction"> 
+		</accion>	
+		
+		<accion nombre="ImportarTiendaNube" 
+				modo="list"
+				cuesta="true"
+				confirmar="true"
+				clase="org.openxava.mercadolibre.actions.ImportarPublicacionesTiendaNubeAction"> 
+		</accion>
+
+	</controlador>
+    
+    <controlador nombre="ProcesarCSVPublicacionML">
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.mercadolibre.actions.ProcesarCSVPublicacionMLAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+	
+	<controlador nombre="PedidoML">
+		<hereda-de controlador="Transaccion"/>
+			<accion nombre="new"	
+				oculta="true"
+				clase="org.openxava.base.actions.CrearTransaccionAction"
+				icono="library-plus"
+				atajo-de-teclado="Control Alt N">
+				<poner propiedad="restoreModel" valor="true"/>			
+			</accion>
+	</controlador>  
+	
+	<controlador nombre="PedidoEcommerce">
+		<accion nombre="reservar" 
+				modo="detail" 
+				clase="org.openxava.mercadolibre.actions.ConfirmarPedidoMLAction"
+				atajo-de-teclado="Control Alt C"/> 
+		<accion nombre="Facturar"
+				modo="list"
+				cuesta="true"
+				atajo-de-teclado="Control Alt X"								
+				clase="org.openxava.mercadolibre.actions.FacturarMercadoLibreAction"/>
+		<accion nombre="FacturaBorrador"
+				modo="list"
+				cuesta="true"
+				atajo-de-teclado="Control Alt X"								
+				clase="org.openxava.mercadolibre.actions.FacturarMercadoLibreAction"/>
+				<poner propiedad="confirma" valor="false"/>
+<!-- 		<accion nombre="NovedadesML" -->
+<!-- 				modo="list" -->
+<!-- 				cuesta="true"								 -->
+<!-- 				clase="org.openxava.mercadolibre.actions.ImportarPedidoMercadoLibreAction"/> -->
+		<accion nombre="NovedadesTiendaNube"
+    			modo="list"
+    			cuesta="true"
+    			confirmar="true"
+    			clase="org.openxava.mercadolibre.actions.BuscarPedidosTiendaNubeAction"/>			
+    	<accion nombre="NovedadesPorFechaML"
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">	
+			<poner propiedad="accionReporte" valor="PedidoEcommerce.BuscarPedidos"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>		
+		<accion nombre="BuscarPedidos"
+				oculta="true"
+				clase="org.openxava.mercadolibre.actions.BuscarPedidosMercadoLibreAction"/>		
+    </controlador>
+    
+    <controlador nombre="FacturarEcommerce">
+    	<accion nombre="Facturar"
+				modo="list"
+				cuesta="true"
+				atajo-de-teclado="Control Alt X"								
+				clase="org.openxava.mercadolibre.actions.FacturarMercadoLibreAction">
+		</accion>
+		<accion nombre="FacturaBorrador"
+				modo="list"
+				cuesta="true"
+				atajo-de-teclado="Control Alt X"								
+				clase="org.openxava.mercadolibre.actions.FacturarMercadoLibreAction">
+				<poner propiedad="confirma" valor="false"/>
+		</accion>
+    </controlador>
+    
+
+    
+    <controlador nombre="TiendaNube">
+        <accion nombre="Conectar" 
+                clase="org.openxava.mercadolibre.actions.ConectarTiendaNubeAction"
+                confirmar="true">
+        </accion>
+    </controlador>
+    
+    <controlador nombre="ContratoFacturacion">
+    	<accion nombre="Facturar" 
+				modo="list" 
+				clase="org.openxava.contratos.actions.FacturarContratosAction"
+				cuesta="true"
+				confirmar="true"
+				atajo-de-teclado="Control Alt V"> 
+		</accion>
+		<accion nombre="ContratosExcel" 
+				modo="list" 
+				clase="org.openxava.reportes.actions.ReportContratosAction"
+				confirmar="true"> 
+		</accion>
+	</controlador>
+	
+	<controlador nombre="StockValorizado">
+    	<accion nombre="SaldosValorizados" 
+				modo="list" 
+				clase="org.openxava.reportes.actions.ReportSaldosInventarioValorizadosAction"
+				confirmar="true"> 
+		</accion>
+	</controlador>
+	
+	<controlador nombre="Smarty">
+		<accion nombre="Clientes" 
+				modo="list" 
+				clase="org.openxava.reportes.actions.ReportSmartyClientesAction"
+				confirmar="true"> 
+		</accion>
+		<accion nombre="Stock" 
+				modo="list" 
+				clase="org.openxava.reportes.actions.ReportSmartyStockAction"
+				confirmar="true"> 
+		</accion>	 	 
+	</controlador>
+	
+	  <controlador nombre="SolicitudMercaderia">	  	
+	  	<accion nombre="ImportarCSV" 
+				modo="list"
+				clase="org.openxava.base.actions.ImportarCSVGenericoAction"> 
+				<poner propiedad="nombreControlador" valor="ProcesarCSVSolicitudMercaderia"/>	
+		</accion>
+		
+		<accion nombre="ReporteReposicionMercaderia" 
+				modo="list"
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="SolicitudMercaderia.ReposicionMercaderia"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>
+			<poner propiedad="vistaParametros" valor="SoloFechaSucursal"/>		
+		</accion>
+		
+		<accion nombre="ReposicionMercaderia" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportReposicionMercaderiaAction"> 	
+		</accion>
+	</controlador>
+    
+    <controlador nombre="ProcesarCSVSolicitudMercaderia">		
+		<accion nombre="Importar"
+				cuesta="true" 
+				clase="org.openxava.inventario.actions.ProcesarCSVSolicitudMercaderiaAction"> 
+		</accion>
+		<accion nombre="cancel" clase="org.openxava.actions.CancelAction"/>
+	</controlador>
+	
+	<controlador nombre="Asiento">		
+		<accion nombre="ReimputarCentroCostos"
+				confirmar="true"
+				modo="detail"
+				clase="org.openxava.contabilidad.actions.GenerarAsientoReimputacionCCAction"> 
+		</accion>		
+	</controlador>
+	
+	<controlador nombre="ModificarCtaCte">
+		<accion nombre="CambiarClasificador"
+				modo="detail"  
+				clase="org.openxava.base.actions.SeleccionarValorParaCambiarAction">
+			<poner propiedad="accion" valor="ModificarAtributoConAuditoria.Confirmar"/>
+			<poner propiedad="nombreAtributo" valor="Clasificador"/>
+			<poner propiedad="nombreSubview" valor="ctacte"/>
+		</accion>
+		
+		<accion nombre="CambiarFechaProbable"
+				modo="detail"  
+				clase="org.openxava.base.actions.SeleccionarValorParaCambiarAction">
+			<poner propiedad="accion" valor="ModificarAtributoConAuditoria.Confirmar"/>
+			<poner propiedad="nombreAtributo" valor="FechaProbable"/>
+			<poner propiedad="nombreSubview" valor="ctacte"/>
+		</accion>      		
+	</controlador>
+	
+	<controlador nombre="Indicadores">
+	
+		<accion nombre="Indicadores1" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador1"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>
+		</accion>
+		
+		<accion nombre="Indicadores2" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador2"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores3" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador3"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>
+		</accion>
+		
+		<accion nombre="Indicadores4" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador4"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores5" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador5"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores6" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador6"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores7" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador7"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores8" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador8"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores9" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador9"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores10" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador10"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores11" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador11"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores12" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador12"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores13" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador13"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores14" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador14"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores15" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador15"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores16" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador16"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores17" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador17"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores18" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador18"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores19" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador19"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores20" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador20"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores21" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador21"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores22" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador22"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores23" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador23"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores24" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador24"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores25" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador25"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores26" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador26"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores27" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador27"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores28" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador28"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores29" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador29"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+		
+		<accion nombre="Indicadores30" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="Indicadores.GenerarIndicador30"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+				
+		<accion nombre="GenerarIndicador1"
+				oculta="true" 
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="1"/> 
+		</accion>
+		<accion nombre="GenerarIndicador2"
+				oculta="true" 
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="2"/> 
+		</accion>
+		<accion nombre="GenerarIndicador3" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="3"/> 
+		</accion>
+		<accion nombre="GenerarIndicador4" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="4"/> 
+		</accion>
+		<accion nombre="GenerarIndicador5" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="5"/> 
+		</accion>
+		<accion nombre="GenerarIndicador6" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="6"/> 
+		</accion>
+		<accion nombre="GenerarIndicador7" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="7"/> 
+		</accion>
+		<accion nombre="GenerarIndicador8" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="8"/> 
+		</accion>
+		<accion nombre="GenerarIndicador9" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="9"/> 
+		</accion>
+		<accion nombre="GenerarIndicador10" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="10"/>
+		</accion>
+		<accion nombre="GenerarIndicador11" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="11"/> 
+		</accion>
+		<accion nombre="GenerarIndicador12" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="12"/> 
+		</accion>
+		<accion nombre="GenerarIndicador13" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="13"/>
+		</accion>
+		<accion nombre="GenerarIndicador14" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="14"/> 
+		</accion>
+		<accion nombre="GenerarIndicador15" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="15"/> 
+		</accion>
+		<accion nombre="GenerarIndicador16" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="16"/> 
+		</accion>
+		<accion nombre="GenerarIndicador17" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="17"/> 
+		</accion>
+		<accion nombre="GenerarIndicador18" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="18"/> 
+		</accion>
+		<accion nombre="GenerarIndicador19" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="19"/> 
+		</accion>
+			<accion nombre="GenerarIndicador20" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="20"/> 
+		</accion>
+			<accion nombre="GenerarIndicador21" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="21"/> 
+		</accion>
+		<accion nombre="GenerarIndicador22" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="22"/> 
+		</accion>
+		<accion nombre="GenerarIndicador23" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="23"/> 
+		</accion>
+		<accion nombre="GenerarIndicador24" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="24"/> 
+		</accion>
+		<accion nombre="GenerarIndicador25" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="25"/> 
+		</accion>
+		<accion nombre="GenerarIndicador26" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="26"/> 
+		</accion>
+		<accion nombre="GenerarIndicador27" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="27"/> 
+		</accion>
+		<accion nombre="GenerarIndicador28" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="28"/> 
+		</accion>
+		<accion nombre="GenerarIndicador29" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="29"/> 
+		</accion>
+		<accion nombre="GenerarIndicador30" 
+				oculta="true"
+				clase="org.openxava.reportes.actions.ReportIndicadoresAction">				
+				<poner propiedad="numero" valor="30"/> 
+		</accion>
+	</controlador>
+	
+	<controlador nombre="ReciboCobranza">		
+		<accion nombre="InformeCobranza" 
+				modo="list"				
+				clase="org.openxava.negocio.actions.ParametrosReporteAction">
+			<poner propiedad="accionReporte" valor="ReciboCobranza.EjecutarInformeCobranza"/>	
+			<poner propiedad="modeloParametros" valor="org.openxava.negocio.model.ParametrosRangoFecha"/>		
+		</accion>
+				
+		<accion nombre="EjecutarInformeCobranza"
+				oculta="true" 
+				clase="org.openxava.reportes.actions.ReportInformeCobranzasAction">				
+		</accion>		
+	</controlador>
+	
+	<controlador nombre="CodigoBarrasProducto">
+		<accion nombre="TestLector"
+				modo="detail"
+				por-defecto="casi-siempre"
+				clase="org.openxava.codigobarras.actions.TestLectorCodigoBarrasAction">
+		</accion>
+	</controlador>
+	
+	<controlador nombre="LectorCodigoBarras">
+		<accion nombre="ControlPorCodigoBarras"
+				icono="barcode-scan"
+				clase="org.openxava.codigobarras.actions.ControlarItemsCodigoBarraAction">
+				<poner propiedad="proximaAccion" valor="LectorCodigoBarras.Leer"/>	
+		</accion>
+		
+		<accion nombre="Leer"
+				clase="org.openxava.codigobarras.actions.ConfirmarLecturaCodigoBarraAction">
+		</accion>		
+
+		<accion nombre="CrearPorCodigoBarra"
+				icono="barcode-scan"
+				clase="org.openxava.codigobarras.actions.ControlarItemsCodigoBarraAction">
+				<poner propiedad="proximaAccion" valor="LectorCodigoBarras.Crear"/>	
+		</accion>
+		
+		<accion nombre="Crear"
+				clase="org.openxava.codigobarras.actions.ConfirmarLecturaCodigoBarraAction">
+				<poner propiedad="crearItem" valor="true"/>	
+		</accion>
+		
+		<accion nombre="cancel"
+				clase="org.openxava.base.actions.CancelarDialogoYEditarAction">				
+		</accion>			
+	</controlador>
+	
+	<controlador nombre="EliminarSeleccionados">
+		<accion nombre="deleteSelected"
+		    	modo="list" 
+		    	confirmar="true"
+				procesar-elementos-seleccionados="true"
+				imagen="delete.gif"
+				icono="delete"			 
+				clase="org.openxava.actions.DeleteSelectedAction">
+		</accion>
+	</controlador>
+	
+	<controlador nombre="Incidente">
+		<accion nombre="misPendientes"
+		    	modo="list" 		    	
+				clase="org.openxava.ventas.actions.VerMisIncidentesAction">
+		</accion>
+		<accion nombre="Todos"
+		    	modo="list" 		    	
+				clase="org.openxava.ventas.actions.VerMisIncidentesAction">
+			<poner propiedad="todos" valor="true"/>	
+		</accion>
+	</controlador>
+	
+	<controlador nombre="ItemPendienteRecepcionMercaderia">
+		<accion nombre="Cumplir" modo="list" 
+				clase="org.openxava.base.actions.ProcesarItemPendienteSeleccionadosAction"
+				atajo-de-teclado="Control Alt C">
+			<poner propiedad="metodoInstanciarItemPendiente" valor="itemPendienteRecepcionMercaderiaProxy"/>
+		</accion>
+		
+		<accion nombre="CancelarPendientes" modo="list" 
+				clase="org.openxava.base.actions.CancelarItemsPendientesSeleccionadosAction"
+				confirmar="true">
+			<poner propiedad="metodoInstanciarItemPendiente" valor="itemPendienteRecepcionMercaderiaProxy"/>
+		</accion>
+	</controlador>
+			      
+</controladores>

@@ -1,0 +1,73 @@
+<?xml version = "1.0" encoding = "ISO-8859-1"?>
+ 
+<!DOCTYPE valores-defecto-tabs SYSTEM "dtds/valores-defecto-tabs.dtd">
+ 
+<valores-defecto-tabs>
+	<tab>
+        <condicion-base>${activo} = 't'</condicion-base>
+ 		
+ 		<para-modelo modelo="Aduana"/>
+ 		<para-modelo modelo="AsientoPlantilla"/>
+ 		<para-modelo modelo="Banco"/>
+ 		<para-modelo modelo="Caja"/>
+ 		<para-modelo modelo="CajaProducto"/>          
+ 		<para-modelo modelo="CategoriaProducto"/>
+        <para-modelo modelo="CentroCostos"/>
+        <para-modelo modelo="CicloFacturacion"/>
+        <para-modelo modelo="Clasificador"/>
+        <para-modelo modelo="Cliente"/>
+        <para-modelo modelo="Color"/>        
+        <para-modelo modelo="ConceptoTesoreria"/>
+        <para-modelo modelo="CondicionVenta"/>
+        <para-modelo modelo="ConfiguracionMercadoLibre"/>
+        <para-modelo modelo="CuentaBancaria"/>
+        <para-modelo modelo="CuentaContable"/>
+        <para-modelo modelo="Deposito"/>  
+        <para-modelo modelo="Empleado"/>
+        <para-modelo modelo="Empresa"/>
+        <para-modelo modelo="Familia"/>
+        <para-modelo modelo="Fabricante"/>
+        <para-modelo modelo="FrecuenciaEntrega"/>
+        <para-modelo modelo="Funcion"/>
+        <para-modelo modelo="FuncionEmpleado"/>
+        <para-modelo modelo="Genero"/>
+        <para-modelo modelo="GrupoUsuarioObjetoReclamo"/>
+        <para-modelo modelo="Impuesto"/>
+        <para-modelo modelo="Linea"/>           
+        <para-modelo modelo="Marca"/>
+        <para-modelo modelo="MedioTransporte"/>
+        <para-modelo modelo="Modelo"/>
+        <para-modelo modelo="MotivoAjusteInventario"/>
+        <para-modelo modelo="ObjetoReclamo"/>
+        <para-modelo modelo="OrigenReclamo"/>        
+        <para-modelo modelo="Pais"/>
+        <para-modelo modelo="Prioridad"/>        
+        <para-modelo modelo="Producto"/>
+        <para-modelo modelo="Proveedor"/>
+        <para-modelo modelo="PuntoVenta"/>
+        <para-modelo modelo="Rubro"/>
+        <para-modelo modelo="Subfamilia"/>
+        <para-modelo modelo="Subzona"/>
+        <para-modelo modelo="Sucursal"/>
+        <para-modelo modelo="SucursalBanco"/>
+        <para-modelo modelo="TablaEscalasImpuesto"/>
+        <para-modelo modelo="TarjetaCredito"/>
+        <para-modelo modelo="Tesoreria"/>
+        <para-modelo modelo="TipoAsiento"/>
+        <para-modelo modelo="TipoClasificador"/>
+        <para-modelo modelo="TipoEntrega"/>
+        <para-modelo modelo="TipoMantenimiento"/>
+        <para-modelo modelo="TipoOperacionVenta"/>
+        <para-modelo modelo="TipoReclamo"/>
+        <para-modelo modelo="TipoResultadoTarea"/>
+        <para-modelo modelo="TipoTarea"/>        
+        <para-modelo modelo="TipoValorConfiguracion"/>
+        <para-modelo modelo="UnidadNegocio"/>
+        <para-modelo modelo="UsuarioReclamo"/>
+        <para-modelo modelo="Vehiculo"/>        
+        <para-modelo modelo="Vendedor"/>
+        <para-modelo modelo="Zona"/>
+        <para-modelo modelo="ZonaReparto"/>
+        
+    </tab>
+</valores-defecto-tabs>
